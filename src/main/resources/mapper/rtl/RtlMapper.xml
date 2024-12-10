@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.haessae0.batch.rtl.mapper.RtlMapper">
+    <select id="selectRtlList" resultType="com.haessae0.batch.rtl.dto.RtlDto">
+        SELECT MRCT_ID AS mrctId, MRCT_NM AS mrctNm, BILL_DT AS billDt
+        	 , CNTR_PRDT_NM AS cntrPrdtNm, BILL_CNT AS billCnt, BILL_AMT AS billAmt
+        	 , FEE_RT AS feeRt, SPL_AMT AS splAmt, VAT AS vat, FEE AS fee
+        	 , RCPT_SCH_AMT AS rcptSchAmt, RTL_CNTR_NO AS rtlCntrNo 
+		FROM TB_RTL 
+    </select>
+</mapper>
