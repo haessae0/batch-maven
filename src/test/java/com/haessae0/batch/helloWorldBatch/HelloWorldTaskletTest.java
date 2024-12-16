@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 
-import com.haessae0.batch.tasklet.HelloWorldTasklet;
+import com.haessae0.batch.hello.tasklet.HelloWorldTasklet;
 
 class HelloWorldTaskletTest {
 
