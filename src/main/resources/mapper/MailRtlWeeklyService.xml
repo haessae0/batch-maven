@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.haessae0.batch.mapper.MailRtlWeeklyMapper">
+
+    <select id="selectMrctList" resultType="com.haessae0.batch.dto.MrctDto">
+        SELECT MRCT_ID as mrctId
+        FROM TS_RTL_BILL_LDGR
+        WHERE BILL_DT = #{curDate}
+    </select>
+
+    <select id="selectKeyMan" resultType="com.haessae0.batch.dto.KeyManDto">
+        SELECT EMAIL as email
+        FROM TB_MRCT_KEYMAN
+        WHERE MRCT_ID = #{mrctId}
+    </select>
+
+    <select id="selectRtlList" resultType="com.haessae0.batch.dto.RtlDto">
+        SELECT MRCT_NM      AS mrctNm,
+               CNTR_PRDT_NM AS cntrPrdtNm,
+               BILL_DT      AS billDt,
+               BILL_CNT     AS billCnt,
+               BILL_AMT     AS billAmt,
+               FEE_RT       AS feeRt,
+               SPL_AMT      AS splAmt,
+               VAT          AS vat,
+               FEE          AS fee,
+               RCPT_SCH_AMT AS rcptSchAmt
+        FROM TB_RTL
+        WHERE MRCT_ID = #{mrctId}
+          AND BILL_DT = #{curDate}
+    </select>
+
+    <select id="getMailId" resultType="com.haessae0.batch.dto.MailIdDto">
+        SELECT 'MAIL123456' AS mailId
+    </select>
+
+    <insert id="insertBatchApprMng">
+        INSERT INTO BATCH_APPR_MNG (SEQ_NO, PROC_DT)
+        VALUES ('SEQ' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS'), SYSDATE)
+    </insert>
+
+    <select id="selectSeqNo" resultType="string">
+        SELECT 'SEQ001'
+        FROM DUAL
+    </select>
+
+    <update id="updateBatchApprMng">
+        UPDATE BATCH_APPR_MNG
+        SET PROC_RSLT = #{procRslt},
+            RSLT_MSG  = #{rsltMsg}
+        WHERE SEQ_NO = #{seqNo}
+    </update>
+
+</mapper>
