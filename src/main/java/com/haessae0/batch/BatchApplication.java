@@ -5,12 +5,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@MapperScan("com.haessae0.batch.rtl.mapper")
+@MapperScan("com.haessae0.batch.mapper")
 @SpringBootApplication
 @EnableScheduling
 public class BatchApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(BatchApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BatchApplication.class, args);
+    }
 
 }
